@@ -4,8 +4,8 @@ from matplotlib import pylab
 # funkcja hipotezy h(x) = teta0 + teta1*x
 # funkcja kosztu  J(teta0, teta1) = 1/(2*m)*sum((h(x) - y)**2)
 # minimalizacja J(teta0, teta1)
-# funkcja gradientu prostego: teta0 = teta0 - alpha * 1/m * sum((h(x) - y)**2)
-#                             teta1 = teta1 - alpha * 1/m * sum((h(x) - y)**2)*x
+# funkcja gradientu prostego: teta0 = teta0 - alpha * 1/m * sum((h(x) - y)
+#                             teta1 = teta1 - alpha * 1/m * sum((h(x) - y)*x
 s_x = [1,2,3]
 s_y = [1,2,3]
 m  = len(s_x)
