@@ -10,7 +10,6 @@
 #             result += [ele]
 #     return result
 
-
 def h_map(house_map):
     r = 0
     c = 0
@@ -24,6 +23,22 @@ def h_map(house_map):
         r += 1
     return False
 
+cat = [1,3]
+m = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+def cat_coordinate(c, h):
+    row, col = c
+    if row < 0 or col < 0:
+        return True
+    try:
+        h[row][col] = 'a'
+        return True
+    except:
+        return False
+
+
+print(cat_coordinate(cat, m))
+
 def solutions(start, house_map):
     s = ''
     stop = h_map(house_map)
@@ -34,7 +49,6 @@ def solutions(start, house_map):
     s += 'R' * abs(start_col - stop_col) if start_col < stop_col else 'L' * abs(start_col - stop_col)
     return s
 
-# cat = [0,0]
-# m = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
 #
 # print(solutions(cat, m))
