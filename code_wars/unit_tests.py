@@ -1,6 +1,9 @@
 import unittest
 import seba
 import random
+from string import ascii_lowercase as alphabet
+
+
 class differentTests(unittest.TestCase):
     # def testVertical(self):
     #     start = [0, 0]
@@ -63,14 +66,54 @@ class differentTests(unittest.TestCase):
     #         self.assertIn(seba.solutions(start, f), solutions_dict[rand])
 
     # check if cat in room
-    def test_cat_in_room(self):
-        cat = [-1,3]
-        l = [[0 for i in range(3)] for _ in range(3)]
-        self.assertTrue(seba.cat_coordinate(cat, l))
-        cat = [1, 1]
-        l = [[0 for i in range(3)] for _ in range(3)]
-        self.assertFalse(seba.cat_coordinate(cat, l))
+    # def test_cat_in_room(self):
+    #     n = 100
+    #     cats = [[random.choice(range(-20, 20)), random.choice(range(-20, 20))] for _ in range(n)]
+    #     for cat in cats:
+    #         rand1, rand2 = random.choices(range(1,20), k=2)
+    #         l = [[0 for i in range(rand1)] for _ in range(rand2)]
+    #         r, c = cat
+    #         if r < 0 or c < 0:
+    #             print('negatie nums')
+    #             self.assertTrue(seba.cat_coordinate(cat, l))
+    #         if r > len(l) or c > len(l[0]):
+    #             print('second condition')
+    #             self.assertTrue(seba.cat_coordinate(cat, l))
 
+    # def test_coordinate_table(self):
+    #     for _ in range(20):
+    #         n, n1 = random.choices(range(2, 10), k=2)
+    #         l = [[0 for i in range(n1)] for _ in range(n)]
+    #         rand = random.choice(range((n*n1)//2))
+    #         board = add_value(l, rand)
+    #         ans = find_table(board)
+    #         print(board)
+    #         print(ans)
+    #         print('-'*10)
+    #         self.assertEqual(seba.room_map(board), ans)
+
+    # def test_longest_empty_arr(self):
+    #     arr = []
+    #     c = 0
+    #     while c < 20:
+    #         i, j = random.choices(range(len(alphabet)), k=2)
+    #         if i < j:
+    #             arr.append(alphabet[i:j])
+    #             c += 1
+    #     for ele in arr:
+    #         k = random.randint(len(ele),50)
+    #         self.assertEqual(seba.longest_consec(ele, k), '')
+    def test_my_dict(self):
+        d = seba.Dictionary()
+        add_words = [['Socer', 'A sport'], ['Apple', 'a fruit'], ['RPG', 'a game'],
+                     ['seba', 'a man'], ['', '']]
+
+        for key, word in add_words:
+            d.newentry(key, word)
+        print(d.__dict__)
+
+        for key, word in add_words:
+            self.assertEqual(d.look(key), word)
 
 
 
