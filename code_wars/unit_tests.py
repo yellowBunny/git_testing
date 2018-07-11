@@ -103,18 +103,19 @@ class differentTests(unittest.TestCase):
     #     for ele in arr:
     #         k = random.randint(len(ele),50)
     #         self.assertEqual(seba.longest_consec(ele, k), '')
-    def test_my_dict(self):
-        d = seba.Dictionary()
-        add_words = [['Socer', 'A sport'], ['Apple', 'a fruit'], ['RPG', 'a game'],
-                     ['seba', 'a man'], ['', '']]
-
-        for key, word in add_words:
-            d.newentry(key, word)
-        print(d.__dict__)
-
-        for key, word in add_words:
-            self.assertEqual(d.look(key), word)
-
+    # def test_my_dict(self):
+    #     d = seba.Dictionary()
+    #     add_words = [['Socer', 'A sport'], ['Apple', 'a fruit'], ['RPG', 'a game'],
+    #                  ['seba', 'a man'], ['', '']]
+    #
+    #     for key, word in add_words:
+    #         d.newentry(key, word)
+    #     print(d.__dict__)
+    #
+    #     for key, word in add_words:
+    #         self.assertEqual(d.look(key), word)
+    def test_next(self):
+        pass
 
 
 if __name__ == '__main__':
