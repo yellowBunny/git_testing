@@ -4,7 +4,7 @@ import random
 from string import ascii_lowercase as alphabet
 
 
-class differentTests(unittest.TestCase):
+#class differentTests(unittest.TestCase):
     # def testVertical(self):
     #     start = [0, 0]
     #     start1 = [2, 0]
@@ -67,8 +67,8 @@ class differentTests(unittest.TestCase):
 
     # check if cat in room
 
-    def test_cat_in_room(self):
-        cats = [[random.choice(range(-50,50)), random.choice(range(-50, 50))] for _ in range(10)]
+    # def test_cat_in_room(self):
+    #     cats = [[random.choice(range(-50,50)), random.choice(range(-50, 50))] for _ in range(10)]
 
 
         # l = [[0 for i in range(3)] for _ in range(3)]
@@ -77,22 +77,22 @@ class differentTests(unittest.TestCase):
         # l = [[0 for i in range(3)] for _ in range(3)]
         # self.assertFalse(seba.cat_coordinate(cat, l))
 
-    def test_find_cat(self):
-        n = 3
-        l = [[0 for i in range(n)] for _ in range(n)]
-        rand = random.choice(range(1, n**2))
-
-        def board(l,rand):
-            c = 0
-            for i in range(len(l)):
-                for j in range(len(l[i])):
-                    c += 1
-                    if c == rand:
-                        l[i][j] = 1
-                        return l
-
-        f = board(l, rand)
-        print(f)
+    # def test_find_cat(self):
+    #     n = 3
+    #     l = [[0 for i in range(n)] for _ in range(n)]
+    #     rand = random.choice(range(1, n**2))
+    #
+    #     def board(l,rand):
+    #         c = 0
+    #         for i in range(len(l)):
+    #             for j in range(len(l[i])):
+    #                 c += 1
+    #                 if c == rand:
+    #                     l[i][j] = 1
+    #                     return l
+    #
+    #     f = board(l, rand)
+    #     print(f)
 
     # def test_cat_in_room(self):
     #     n = 100
@@ -143,8 +143,17 @@ class differentTests(unittest.TestCase):
     #
     #     for key, word in add_words:
     #         self.assertEqual(d.look(key), word)
-    def test_next(self):
-        pass
+
+
+class Seba_tests(unittest.TestCase):
+    # manual tests
+    def test_frelancer_manual(self):
+        args = [[60, [(1,0)]], [60, [(0,0)]], [141, [(1,55), (0,25)]]]
+        results = ['Easy Money!', "I need to work 1 hour(s) and 0 minute(s)", "I need to work 0 hour(s) and 1 minute(s)"]
+        for i in range(len(results)):
+            minutes, frelancers = args[i]
+            func = seba.frelancer(minutes, frelancers)
+            self.assertEqual(func, results[i])
 
 
 if __name__ == '__main__':
