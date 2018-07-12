@@ -64,12 +64,31 @@ class differentTests(unittest.TestCase):
 
     # check if cat in room
     def test_cat_in_room(self):
-        cat = [-1,3]
-        l = [[0 for i in range(3)] for _ in range(3)]
-        self.assertTrue(seba.cat_coordinate(cat, l))
-        cat = [1, 1]
-        l = [[0 for i in range(3)] for _ in range(3)]
-        self.assertFalse(seba.cat_coordinate(cat, l))
+        cats = [[random.choice(range(-50,50)), random.choice(range(-50, 50))] for _ in range(10)]
+
+
+        # l = [[0 for i in range(3)] for _ in range(3)]
+        # self.assertTrue(seba.cat_coordinate(cat, l))
+        # cat = [1, 1]
+        # l = [[0 for i in range(3)] for _ in range(3)]
+        # self.assertFalse(seba.cat_coordinate(cat, l))
+
+    def test_find_cat(self):
+        n = 3
+        l = [[0 for i in range(n)] for _ in range(n)]
+        rand = random.choice(range(1, n**2))
+
+        def board(l,rand):
+            c = 0
+            for i in range(len(l)):
+                for j in range(len(l[i])):
+                    c += 1
+                    if c == rand:
+                        l[i][j] = 1
+                        return l
+
+        f = board(l, rand)
+        print(f)
 
 
 

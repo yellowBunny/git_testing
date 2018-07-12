@@ -9,7 +9,7 @@
 #         else:
 #             result += [ele]
 #     return result
-
+m = [[0, 0, 0], [0, 0, 0], [0, 0, 1]]
 def h_map(house_map):
     r = 0
     c = 0
@@ -22,6 +22,9 @@ def h_map(house_map):
             c = 0
         r += 1
     return False
+print(h_map(m))
+
+
 
 cat = [1,3]
 m = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -32,9 +35,9 @@ def cat_coordinate(c, h):
         return True
     try:
         h[row][col] = 'a'
-        return True
-    except:
         return False
+    except:
+        return True
 
 
 print(cat_coordinate(cat, m))
