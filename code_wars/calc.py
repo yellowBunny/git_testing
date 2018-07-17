@@ -1,5 +1,4 @@
 import re
-import operator
 
 class Calc:
     def __init__(self, equation):
@@ -11,31 +10,31 @@ class Calc:
         self.splited_eq = re.findall(r'[0-9]+|[+-/*]', equation)
         # print(self.splited_eq)
 
-    def first_to_compute(self):
-        result = []
-        c = []
-        allowed_signs = ['/', '*']
-        for i in range(len(self.splited_eq)):
-            if self.splited_eq[i] in allowed_signs:
-                result += self.splited_eq[i-1:i+2]
-                print(self.splited_eq[i])
-                c += [self.operators[self.splited_eq[i]](int(self.splited_eq[i-1]),int(self.splited_eq[i+1]))]
-        print(result)
-        print(c)
+    def compute(self):
+        first_operators = self.first_to_compute(self.splited_eq, '/', '*')
+        second_operators = self.first_to_compute(first_operators, '+','-')
+        return second_operators
 
-    def second_to_compute(self):
-        result = []
-        allowed_signs = ['+', '-']
-        for i in range(len(self.splited_eq)):
-            if self.splited_eq[i] in allowed_signs:
-                result += self.splited_eq[i - 1:i + 2]
-        print(result)
+    def first_to_compute(self, equasion, *signs):
+        cp = equasion[:]
+        for _ in range(cp.count(signs[0]) + cp.count(signs[1])):
+            for i in range(len(cp)):
+                if cp[i] in signs:
+                    print(cp[i])
+                    equal = self.operators[cp[i]](float(cp[i-1]),float(cp[i+1]))
+                    print(equal)
+                    print(cp[i-1:i+2])
+                    cp[i-1] = equal
+                    del cp[i:i+2]
+                    break
+        return cp
+
 
 
 
 s = '1 + 1 / 100 * 20 - 10'
 c = Calc(s)
-c.first_to_compute()
-# c.second_to_compute()
-print(eval(s))
+# print(c.compute())
+c.first_to_compute('1 / 0', '/', '*')
+
 

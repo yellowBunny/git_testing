@@ -11,4 +11,4 @@ def frelancer(minutes, array):
     return 'Easy Money!' if minutes <= result else 'I need to work {} hour(s) and {} minute(s)'.format(h, m)
 
 
-print(frelancer(60, [(0,0)]))
+#print(frelancer(60, [(0,0)]))
