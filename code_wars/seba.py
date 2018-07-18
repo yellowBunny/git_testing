@@ -1,6 +1,10 @@
-def trickey_sorted_array(array1 ,array2):
-    common_elements = [i for i in array1 if i in array2]
-    return sorted(common_elements, key = dr_dsddr, reverse=True)
+
+def trickey_sorted_array(array1, array2):
+    cm = [num for num in array1 if num in set(array1) & set(array2)]
+    if cm:
+        if cm.count(cm[-1]) > 1:
+            cm = set(cm)
+    return sorted(cm, key=dr_dsddr, reverse=True)
 
 def dr_dsddr(n):
     dr = sum(int(i) for i in str(n))

@@ -4,7 +4,7 @@ import random
 #from calc import Calc
 
 class CodeWars_tests(unittest.TestCase):
-    def test_simple_test(self):
+    def test_simple_test_dr_dsddr(self):
         '''check if computed numbers by f(n) are correct '''
         nums_to_compute = [5, 56, 28, 64, 18, 31]
         answers = [30, 13, 11, 11, 90, 20]
@@ -13,8 +13,11 @@ class CodeWars_tests(unittest.TestCase):
                              'wrong equal {} != {}'.format(nums_to_compute[i], answers[i]))
 
 
-
-
+    def test_simple_test(self):
+        arr1 = [1,1,1,1,1,1]
+        arr2 = [2,2,2,2,2,2,1]
+        self.assertEqual(seba.trickey_sorted_array(arr1, arr2), [1],
+                         'answer should be {} are {}'.format([1], seba.trickey_sorted_array(arr1, arr2)))
 
 
 
