@@ -3,16 +3,43 @@ import seba
 import random
 #from calc import Calc
 import sys
+from string import ascii_uppercase, digits
 class CodeWars_tests(unittest.TestCase):
 
     def test_simply_test(self):
-        numbers = [2, 3, 4, 5]
-        answers = [8, 27, 64, 125]
-        for i in range(len(numbers)):
-            self.assertEqual(seba.sum_odd_numbers(numbers[i]), answers[i],
-                             'should be {1} are {0}'.format(seba.sum_odd_numbers(4), answers[i]))
+        samples = ["H1H10F1200120008F4F4", 'H1H10F1201000100F4F4']
+        answ = ["H1H1FFFF00200000F4F4", "H1H1FFFF02000000F4F4" ]
+        for i in range(len(samples)):
+            self.assertEqual(seba.string_packet(samples[i]), answ[i], 'should be {} are {}'.format(answ[i], seba.string_packet(samples[i])))
 
+    def test_grate_than_9999(self):
+        s = "H1H10F1200109999F4F4"
+        answ = "H1H1FFFF99990000F4F4"
+        self.assertEqual(seba.string_packet(s), answ)
 
+    def test_bleow_0(self):
+        s = "H1H1B7A200010010F4F4"
+        answ = "H1H1FFFF00000000F4F4"
+        self.assertEqual(seba.string_packet(s), answ)
+
+    def test_rand_test(self):
+        header = ''.join(random.choice(ascii_uppercase + digits) for _ in range(4))
+        foother = ''.join(random.choice(ascii_uppercase + digits) for _ in range(4))
+        operators = random.choice(['0F12', 'B7A2', 'C3D9'])
+        num1, num2 = str(random.randint(1000,9999)), str(random.randint(1000,9999))
+
+        created_string = header + random.choice(operators) + num1 + num2 + foother
+        print(created_string)
+
+        def answer(head, op, n1, n2, foth):
+            d = {'0F12': lambda x, y: x + y,
+                'B7A2': lambda x, y: x - y,
+                'C3D9': lambda x, y: x * y}
+            a = head + op + str(int(n1) + int(n2)) + '0000' + foth
+            return a
+        
+        ans = answer(header, operators, num1, num2, foother)
+        print(ans)
 
    # def test_simple_test_dr_dsddr(self):
     #     '''check if computed numbers by f(n) are correct '''

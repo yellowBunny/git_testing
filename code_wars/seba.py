@@ -29,4 +29,24 @@ def sum_odd_numbers(n):
     print(l[start : stop])
     return sum(l[start : stop])
 
-print(sum_odd_numbers(4))
+
+
+def string_packet(input_string):
+    input_string = '-'.join(input_string[i:i+4] for i in range(len(input_string)) if i%4 == 0)
+    header, instruction, data1, data2, footer = input_string.split('-')
+    operators = {'0F12' : lambda x, y: x + y,
+                'B7A2' : lambda x, y: x - y,
+                'C3D9': lambda x, y: x * y}
+    instead_operatos = 'FFFF'
+    for oper in operators:
+        if oper in input_string:
+            compute_data1 = str(operators[oper](int(data1), int(data2))).zfill(4)
+            if int(compute_data1) < 0:
+                compute_data1 = '0000'
+            elif int(compute_data1) > 9999:
+                compute_data1 = '9999'
+            output_string = header + instead_operatos + compute_data1 + '0000' + footer
+            return output_string
+
+# s = "H1H10F1200120008F4F4"
+# print(string_packet(s))
