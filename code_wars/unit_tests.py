@@ -6,40 +6,83 @@ import sys
 from string import ascii_uppercase, digits
 class CodeWars_tests(unittest.TestCase):
 
-    def test_simply_test(self):
-        samples = ["H1H10F1200120008F4F4", 'H1H10F1201000100F4F4']
-        answ = ["H1H1FFFF00200000F4F4", "H1H1FFFF02000000F4F4" ]
-        for i in range(len(samples)):
-            self.assertEqual(seba.string_packet(samples[i]), answ[i], 'should be {} are {}'.format(answ[i], seba.string_packet(samples[i])))
+    def test_trangle_simple_tests(self):
+        array = [[[1,2], [3,8], [4,3]], [[1,2], [3, 7], [7, 8]]]
+        ans = [6.325, 8.485]
+        for i, arr in enumerate(array):
+            self.assertAlmostEqual(seba.trangle(arr), ans[i], places=3)
 
-    def test_grate_than_9999(self):
-        s = "H1H10F1200109999F4F4"
-        answ = "H1H1FFFF99990000F4F4"
-        self.assertEqual(seba.string_packet(s), answ)
+    def test_trangle_rand_tests(self):
+        pass
 
-    def test_bleow_0(self):
-        s = "H1H1B7A200010010F4F4"
-        answ = "H1H1FFFF00000000F4F4"
-        self.assertEqual(seba.string_packet(s), answ)
 
-    def test_rand_test(self):
-        header = ''.join(random.choice(ascii_uppercase + digits) for _ in range(4))
-        foother = ''.join(random.choice(ascii_uppercase + digits) for _ in range(4))
-        operators = random.choice(['0F12', 'B7A2', 'C3D9'])
-        num1, num2 = str(random.randint(1000,9999)), str(random.randint(1000,9999))
 
-        created_string = header + random.choice(operators) + num1 + num2 + foother
-        print(created_string)
 
-        def answer(head, op, n1, n2, foth):
-            d = {'0F12': lambda x, y: x + y,
-                'B7A2': lambda x, y: x - y,
-                'C3D9': lambda x, y: x * y}
-            a = head + op + str(int(n1) + int(n2)) + '0000' + foth
-            return a
-        
-        ans = answer(header, operators, num1, num2, foother)
-        print(ans)
+
+
+
+
+    # def test_square_up_simple_test(self):
+    #     sampels = (n for n in range(1,4))
+    #     ans = [[1],[0, 1, 2, 1], [0, 0, 1, 0, 2, 1, 3, 2, 1], [0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1]]
+    #     for i in range(3):
+    #         self.assertEqual(seba.squareup(next(sampels)), ans[i])
+
+
+
+    # def test_simple_equeue(self):
+    #     l = [2, 5, 3, 6, 4]
+    #     ans = [6, 18, 12, 20, 17]
+    #     for i in range(len(l)):
+    #         l = [2, 5, 3, 6, 4]
+    #         self.assertEqual(seba.queue(l, i), ans[i],
+    #                          'should be {} is {}'.format(ans[i], seba.queue(l, i)))
+
+
+    # def test_simply_test(self):
+    #     samples = ["H1H10F1200120008F4F4", 'H1H10F1201000100F4F4']
+    #     answ = ["H1H1FFFF00200000F4F4", "H1H1FFFF02000000F4F4" ]
+    #     for i in range(len(samples)):
+    #         self.assertEqual(seba.string_packet(samples[i]), answ[i], 'should be {} are {}'.format(answ[i], seba.string_packet(samples[i])))
+    #
+    # def test_grate_than_9999(self):
+    #     s = "H1H10F1200109999F4F4"
+    #     answ = "H1H1FFFF99990000F4F4"
+    #     self.assertEqual(seba.string_packet(s), answ)
+    #
+    # def test_bleow_0(self):
+    #     s = "H1H1B7A200010010F4F4"
+    #     answ = "H1H1FFFF00000000F4F4"
+    #     self.assertEqual(seba.string_packet(s), answ)
+    #
+    # def test_rand_test(self):
+    #     def answer(head, op, n1, n2, foth):
+    #         d = {'0F12': lambda x, y: x + y,
+    #              'B7A2': lambda x, y: x - y,
+    #              'C3D9': lambda x, y: x * y}
+    #         d1_d2 = d[op](int(n1), int(n2))
+    #         if d1_d2 <= 0:
+    #             d1_d2 = '0000'
+    #         elif d1_d2 >= 9999:
+    #             d1_d2 = '9999'
+    #         else:
+    #             d1_d2 = str(d1_d2).zfill(4)
+    #         a = head + 'FFFF' + d1_d2 + '0000' + foth
+    #         return a
+    #
+    #     for c in range(10):
+    #         header = ''.join(random.choice(ascii_uppercase + digits) for _ in range(4))
+    #         foother = ''.join(random.choice(ascii_uppercase + digits) for _ in range(4))
+    #         operators = random.choice(['0F12', 'B7A2', 'C3D9'])
+    #         num1, num2 = str(random.randint(1000,9999)), str(random.randint(1000,9999))
+    #         created_string = header + operators + num1 + num2 + foother
+    #         ans = answer(header, operators, num1, num2, foother)
+    #         testing_function = seba.string_packet(created_string)
+    #         self.assertEqual(testing_function, ans, msg='should be {} are {}'
+    #                          .format(ans, testing_function))
+    #         print('TEST {}\n {}\n {}\n --> PASSED <--'.format(c, created_string, testing_function))
+
+
 
    # def test_simple_test_dr_dsddr(self):
     #     '''check if computed numbers by f(n) are correct '''

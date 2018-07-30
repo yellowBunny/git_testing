@@ -50,3 +50,52 @@ def string_packet(input_string):
 
 # s = "H1H10F1200120008F4F4"
 # print(string_packet(s))
+
+def queue(arr, pos):
+    c = 0
+    cp_arr = arr[:]
+    while cp_arr:
+        for i in range(len(cp_arr)):
+            if cp_arr[i] > 0:
+                c += 1
+            cp_arr[i] -= 1
+            if cp_arr[pos] == 0:
+                return c
+
+def squareup(n):
+    return [j if j - 1 <= i else 0 for i in range(n) for j in range(n, 0, -1)] # j = 4 - 1, 3-1, 2 - 1, i = 0
+
+
+def roman_calendar(n):
+    d = {1 : 'I', 5 : 'V', 10 : 'X', 50 : 'L',
+         100 : 'C', 500 : 'D', 1000 : 'M'}
+    nums = [10**n for n in range(len(str(n)))]
+
+    return nums
+
+#print(roman_calendar(1234))
+import string
+def birthday(candles,debris):
+    str_result = sum(ord(debris[i]) if i % 2 ==0 else string.ascii_lowercase.index(debris[i]) + 1
+                     for i in range(len(debris)))
+    print(str_result, candles * 1.7 - candles)
+    if str_result > int(candles * 1.7 - candles):
+        return 'Fire'
+    else:
+        return 'It was close'
+
+# print(birthday(900, 'abcdef'))
+
+import itertools
+def trangle(array):
+    comb = itertools.combinations(array, 2)
+    return max(((ele[0][0] - ele[1][0])**2 + (ele[0][1] - ele[1][1]) ** 2) **.5 for ele in comb)
+
+
+def flat_arr(array):
+    return sorted(num for arr in array for num in arr)
+
+a = [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]]
+
+print(flat_arr(a))
+
