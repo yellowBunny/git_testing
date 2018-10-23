@@ -21,7 +21,6 @@ url_s = ['https://www.otodom.pl/oferta/siemianowice-bytkow-3-pokojowe-ID3MBzq.ht
          'https://www.otodom.pl/oferta/atrakcyjne-mieszkanie-2-pok-z-ogrodkiem-i-garazem-ID3MkQ4.html?utm_source=refferals&utm_medium=traffic_exchange&utm_campaign=OLX_nieruchomosci_ad#xtor=SEC-18',
          ]
 
-# "district_name":"Bytk
 
 def get_disciption(data):
     return re.findall(r'<p>(.*?)</p>', data)
